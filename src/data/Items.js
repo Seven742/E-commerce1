@@ -98,3 +98,5 @@ export const allitems = [
     },
 
 ];
+
+export default allitems;

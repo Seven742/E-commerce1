@@ -24,7 +24,7 @@ const AdminLayout = () => {
         <div className="flex min-h-screen">
 
             {/* Sidebar */}
-            <div className="w-64 bg-gray-800 text-white">
+            <div className="w-64 bg-gray-800 text-white sticky top-0 h-screen overflow-y-auto">
                 <div className='flex items-center ml-7 py-4'>
                     <img className='h-10 w-10 rounded-full' src={LogoKS} alt="" />
                     <h1 className="ml-2 text-xl font-bold">E-Commerce</h1>
@@ -101,7 +101,7 @@ const AdminLayout = () => {
             <div className="flex flex-col flex-1">
 
                 {/* Top Navbar */}
-                <div className='bg-gray-900 text-white flex justify-between items-center px-3 py-4'>
+                <div className='sticky top-0 bg-gray-900 text-white flex justify-between items-center px-3 py-4 z-40 shadow-md'>
 
                     {/* Search */}
                     <div className="relative">

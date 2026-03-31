@@ -11,6 +11,8 @@ import { IoGameControllerOutline } from "react-icons/io5";
 import { FaTabletAlt } from "react-icons/fa";
 import Poster from '../assets/Poster.png'
 import { GrFormNextLink } from "react-icons/gr";
+import { useContext } from "react";
+import { SearchContext } from "./SearchContext";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -18,6 +20,7 @@ const Navbar = () => {
     const [categories, setCategories] = useState(false);
     const [find, setFind] = useState(false);
     const [page, setpage] = useState(false);
+    const { search, setSearch } = useContext(SearchContext);
 
     const handlpage = () => {
         setShop(false)
@@ -425,6 +428,8 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder="Search..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
                             className="ml-2 bg-transparent outline-none"
                         />
                     </div>

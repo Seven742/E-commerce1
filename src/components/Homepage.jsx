@@ -25,11 +25,14 @@ import slide2 from '../assets/slide2.png';
 import slide3 from '../assets/slide3.png';
 import slide4 from '../assets/slide4.png';
 import slide5 from '../assets/slide5.png';
+import { useContext } from "react";
+import { SearchContext } from "./SearchContext";
 
 const Homepage = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [favorites, setFavorites] = useState([]);
+    const { search } = useContext(SearchContext);
 
 
     const handleFavorite = (item) => {
@@ -42,7 +45,10 @@ const Homepage = () => {
         }
     };
 
-    console.log(favorites);
+    const filteredItems = allitems.filter((item) => {
+        return item.title.toLowerCase().includes(search.toLowerCase())
+    })
+
 
     const blogs = [
         {
@@ -258,7 +264,7 @@ const Homepage = () => {
             </div>
             {/* All items to sell */}
             <div className="grid justify-center grid-cols-1 py-16 cursor-pointer gap-11 px-32 sm:grid-cols-2 lg:grid-cols-4">
-                {allitems.map((item) => (
+                {filteredItems.map((item) => (
                     <div
                         key={item.id}
                         className="relative rounded-[40px] p-8 flex flex-col border border-gray-300 justify-between hover:shadow-xl transition duration-300"

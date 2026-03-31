@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MdHome, MdNavigateNext, MdFavoriteBorder, MdArrowDropDown } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import { allitems } from "../data/Items";
+import { SearchContext } from "./SearchContext";
 
 const Shop = () => {
     const [showCount, setShowCount] = useState(8);
+    const { search } = useContext(SearchContext);
+
+    const filteredItems = allitems.filter((item) => {
+        return item.title.toLowerCase().includes(search.toLowerCase())
+    })
 
     return (
         <div>
@@ -67,7 +73,7 @@ const Shop = () => {
 
             {/* Product  */}
             <div className="grid justify-center grid-cols-1 py-10 cursor-pointer gap-11 px-28 sm:grid-cols-2 lg:grid-cols-4">
-                {allitems.slice(0, showCount).map((item) => (
+                {filteredItems.slice(0, showCount).map((item) => (
                     <div
                         key={item.id}
                         className="relative rounded-[40px] p-8 flex flex-col border border-gray-300 justify-between hover:shadow-xl transition duration-300"

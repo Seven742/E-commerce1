@@ -43,16 +43,6 @@ const AdminLayout = () => {
                                 </li>
                             )}
                         </NavLink>
-                        <NavLink to="/admin/categories">
-                            {({ isActive }) => (
-                                <li className={`px-8 flex items-center gap-3 py-3 cursor-pointer 
-                             ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
-                             `}>
-                                    <MdCategory className='text-lg' />
-                                    Categories
-                                </li>
-                            )}
-                        </NavLink>
                         <NavLink to="/admin/Products">
                             {({ isActive }) => (
                                 <li className={`px-8 flex items-center py-3 gap-3 cursor-pointer 

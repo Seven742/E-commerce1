@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import LogoKS from '../assets/LogoKS.png'
-import { IoMdSearch } from "react-icons/io";
 import User from '../assets/User.png'
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { MdDashboardCustomize, MdCategory } from "react-icons/md";
@@ -10,99 +9,119 @@ import { IoCartOutline } from "react-icons/io5";
 import { BiSolidReport } from "react-icons/bi";
 import { IoSettings } from "react-icons/io5";
 import { FaSignOutAlt } from "react-icons/fa";
+import { LuPanelLeftClose } from "react-icons/lu";
+import { useState } from 'react';
+import { IoLogOutOutline } from "react-icons/io5";
+import '../App.css';
+import { MdPersonAddAlt1 } from "react-icons/md";
+
+// https://themewagon.github.io/inapp/inventory.html
 
 
 const AdminLayout = () => {
 
     const navigate = useNavigate();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+    console.log(isSidebarOpen)
 
     const handleLogout = () => {
         localStorage.removeItem("admin");
         navigate("/admin/login");
     };
     return (
-        <div className="flex min-h-screen">
+        <div className="flex h-screen overflow-hidden">
 
             {/* Sidebar */}
-            <div className="w-64 bg-gray-800 text-white sticky top-0 h-screen overflow-y-auto">
-                <div className='flex items-center ml-7 py-4'>
-                    <img className='h-10 w-10 rounded-full' src={LogoKS} alt="" />
-                    <h1 className="ml-2 text-xl font-bold">E-Commerce</h1>
-                </div>
+            <div className="bg-gray-800 text-white sticky top-0 h-screen overflow-y-auto no-scrollbar" style={{ width: isSidebarOpen ? "250px" : "80px", transition: "width 0.3s" }}>
+                <div className='border-b-2 border-gray-700'>
+                    <div className='flex items-center ml-7 h-[72px]'>
+                        <img className='h-8 w-8 rounded-full' src={LogoKS} alt="" />
+                        {isSidebarOpen && <h1 className='ml-3 text-lg font-medium'>E-commerce</h1>}
+                    </div>
 
-                <div className=''>
+                </div>
+                <div >
                     <ul>
+                        <h1 className='ml-8 py-2 text-sm'> {isSidebarOpen && "Main"}</h1>
                         <NavLink to="/admin" end>
                             {/* ប្រើ end ជាញឹកញាប់សម្រាប់ main navigation menu ដើម្បី active link ត្រឹមត្រូវ */}
                             {({ isActive }) => (
-                                <li className={`px-8 flex items-center gap-3 py-3 cursor-pointer 
+                                <li className={`px-8 flex items-center gap-3 h-12 cursor-pointer 
                              ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
                              `}>
                                     <MdDashboardCustomize className='text-lg' />
-                                    Dashboard
+                                    {isSidebarOpen && "Dashboard"}
                                 </li>
                             )}
                         </NavLink>
                         <NavLink to="/admin/Products">
                             {({ isActive }) => (
-                                <li className={`px-8 flex items-center py-3 gap-3 cursor-pointer 
+                                <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer 
                              ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
                              `}>
                                     <BsBox className='text-lg' />
-                                    Products
+                                    {isSidebarOpen && "Products"}
                                 </li>
                             )}
                         </NavLink>
                         <NavLink to="/admin/Orders">
                             {({ isActive }) => (
-                                <li className={`px-8 flex items-center py-3 gap-3 cursor-pointer 
+                                <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer 
                              ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
                              `}>
                                     <IoCartOutline className='text-lg' />
-                                    Orders
+                                    {isSidebarOpen && "Orders"}
                                 </li>
                             )}
                         </NavLink>
                         <NavLink to="/admin/Reports">
                             {({ isActive }) => (
-                                <li className={`px-8 flex items-center py-3 gap-3 cursor-pointer 
+                                <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer 
                              ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
                              `}>
                                     <BiSolidReport className='text-lg' />
-                                    Reports
+                                    {isSidebarOpen && "Reports"}
                                 </li>
                             )}
                         </NavLink>
                         <NavLink to="/admin/Users">
                             {({ isActive }) => (
-                                <li className={`px-8 flex items-center py-3 gap-3 cursor-pointer 
+                                <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer 
                              ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
                              `}>
                                     <IoSettings className='text-lg' />
-                                    Setting
+                                    {isSidebarOpen && "Settings"}
                                 </li>
                             )}
+                        </NavLink>
+                        <h1 className='ml-8 py-2 text-sm mt-5'>{isSidebarOpen && "Account"}</h1>
+                        <NavLink to="/admin/login" onClick={handleLogout}>
+                            <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer hover:bg-gray-900`}>
+                                <IoLogOutOutline className='text-lg text-white' />
+                                {isSidebarOpen && "Logout"}
+                            </li>
+                        </NavLink>
+                        <NavLink to="/admin/login" onClick={handleLogout}>
+                            <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer hover:bg-gray-900`}>
+                                <MdPersonAddAlt1 className='text-lg text-white' />
+                                {isSidebarOpen && "Sign Up"}
+                            </li>
                         </NavLink>
                     </ul>
                 </div>
             </div>
 
             {/* Right Side */}
-            <div className="flex flex-col flex-1">
+            <div className="flex flex-col flex-1 h-screen overflow-hidden" style={{ transition: "all 0.3s ease-in-out" }}>
 
                 {/* Top Navbar */}
                 <div className='sticky top-0 bg-gray-900 text-white flex justify-between items-center px-3 py-4 z-40 shadow-md'>
 
                     {/* Search */}
-                    <div className="relative">
-                        <IoMdSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg" />
-
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="pl-10 pr-3 py-2 rounded-xl text-black w-64 outline-none"
-                        />
-                    </div>
+                    <button className="relative cursor-pointer hover:bg-gray-600 bg-gray-700 flex items-center rounded-lg px-2 py-2" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                        <LuPanelLeftClose className="text-white text-lg" />
+                    </button>
 
                     {/* Account */}
                     <div className='flex items-center gap-2'>
@@ -123,7 +142,7 @@ const AdminLayout = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-5 bg-gray-100 flex-1">
+                <div className="p-5 bg-gray-100 flex-1 overflow-y-auto hide-scrollbar">
                     <Outlet />
                 </div>
 

@@ -2,6 +2,8 @@ import React from 'react'
 import { createPortal } from 'react-dom'
 import { useState } from 'react'
 import { allitems } from '../data/Items'
+import { TbEdit } from "react-icons/tb";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 function Modal({ isOpen, children }) {
     if (!isOpen) return null
@@ -69,20 +71,27 @@ const Products = () => {
 
     return (
         <div>
+            <div className='pb-4'>
+                <h1 className='text-2xl font-medium'>Products</h1>
+                <p>Manage your products here.</p>
+            </div>
             <div className='flex justify-between items-center gap-4 mb-4'>
-                <select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className='cursor-pointer px-3 py-2 rounded-lg border outline-none'
-                >
-                    <option value='all'>All Categories</option>
-                    <option value='Gaming'>Gaming</option>
-                    <option value='Smart Watches'>Smart Watches</option>
-                    <option value='Premium Sets'>Premium Sets</option>
-                    <option value='Laptops'>Laptops</option>
-                    <option value='Exclusive'>Exclusive</option>
-                    <option value='Tablet'>Tablet</option>
-                </select>
+                <div>
+                    <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className='cursor-pointer px-3 py-2 rounded-lg border outline-none'
+                    >
+                        <option value='all'>All Categories</option>
+                        <option value='Gaming'>Gaming</option>
+                        <option value='Smart Watches'>Smart Watches</option>
+                        <option value='Premium Sets'>Premium Sets</option>
+                        <option value='Laptops'>Laptops</option>
+                        <option value='Exclusive'>Exclusive</option>
+                        <option value='Tablet'>Tablet</option>
+                    </select>
+                    <input type="text" placeholder='Search products...' className='ml-2 px-3 py-2 rounded-lg border outline-none' />
+                </div>
                 <button onClick={() => setIsOpen(true)} className='bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg'>Add Product</button>
             </div>
 
@@ -175,9 +184,11 @@ const Products = () => {
                                             In Stock
                                         </span>
                                     </td>
-                                    <td className='px-6 py-4 flex justify-center gap-2'>
-                                        <button className='bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs'>Edit</button>
-                                        <button className='bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs'>Delete</button>
+                                    <td className='px-6 py-4 '>
+                                        <div className='flex items-center justify-center gap-2 text-md'>
+                                            <button className='hover:text-red-600'><TbEdit /></button>
+                                            <button className='text-red-600 hover:text-red-700'><RiDeleteBin6Line /></button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}

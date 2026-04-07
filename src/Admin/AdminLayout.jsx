@@ -7,8 +7,6 @@ import { MdDashboardCustomize, MdCategory } from "react-icons/md";
 import { BsBox } from "react-icons/bs";
 import { IoCartOutline } from "react-icons/io5";
 import { BiSolidReport } from "react-icons/bi";
-import { IoSettings } from "react-icons/io5";
-import { FaSignOutAlt } from "react-icons/fa";
 import { LuPanelLeftClose } from "react-icons/lu";
 import { useState } from 'react';
 import { IoLogOutOutline } from "react-icons/io5";
@@ -22,8 +20,6 @@ const AdminLayout = () => {
 
     const navigate = useNavigate();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-    console.log(isSidebarOpen)
 
     const handleLogout = () => {
         localStorage.removeItem("admin");
@@ -85,16 +81,6 @@ const AdminLayout = () => {
                                 </li>
                             )}
                         </NavLink>
-                        <NavLink to="/admin/Users">
-                            {({ isActive }) => (
-                                <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer 
-                             ${isActive ? "bg-gray-900 " : "hover:bg-gray-900"}
-                             `}>
-                                    <IoSettings className='text-lg' />
-                                    {isSidebarOpen && "Settings"}
-                                </li>
-                            )}
-                        </NavLink>
                         <h1 className='ml-8 py-2 text-sm mt-5'>{isSidebarOpen && "Account"}</h1>
                         <NavLink to="/admin/login" onClick={handleLogout}>
                             <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer hover:bg-gray-900`}>
@@ -132,11 +118,6 @@ const AdminLayout = () => {
                         <div>
                             <h1>Admin</h1>
                             <h1 className='text-xs'>Administrator</h1>
-                        </div>
-                        <div>
-                            <button onClick={handleLogout} className='bg-red-600 hover:bg-red-700 flex items-center gap-2 rounded-xl px-5 py-2'>
-                                <FaSignOutAlt />
-                            </button>
                         </div>
                     </div>
                 </div>

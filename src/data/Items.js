@@ -17,84 +17,98 @@ export const allitems = [
         image: m1,
         title: "Chrome Watch",
         subtile: "Exclusive",
-        price: "399"
+        price: "399",
+        percent: 30
     },
     {
         id: 2,
         image: m2,
         title: "Playstation 5",
         subtile: "Exclusive",
-        price: "899"
+        price: "899",
+        percent: 18
     },
     {
         id: 3,
         image: m3,
         title: "Tablet X5",
         subtile: "Tablet",
-        price: "699"
+        price: "699",
+        percent: 13
+
     },
     {
         id: 4,
         image: m4,
         title: "PlayStation Headset",
         subtile: "Gaming",
-        price: "599"
+        price: "599",
+        percent: 20
+
     },
     {
         id: 5,
         image: m5,
         title: "IPhone 14 Pro",
         subtile: "Smart Phones",
-        price: "1,599"
+        price: "1,599",
+        percent: 18
     },
     {
         id: 6,
         image: m6,
         title: "VR Gaming",
         subtile: "Gaming",
-        price: "790"
+        price: "790",
+        percent: 24
     },
     {
         id: 7,
         image: m7,
         title: "Wireless Controller 5",
         subtile: "Gaming",
-        price: "399"
+        price: "399",
+        percent: 18
     },
     {
         id: 8,
         image: m8,
         title: "Xbox One",
         subtile: "Gaming",
-        price: "499"
+        price: "499",
+        percent: 32
     },
     {
         id: 9,
         image: m9,
         title: "Black Sports Watch",
         subtile: "Smart Watches",
-        price: "399"
+        price: "399",
+        percent: 18
     },
     {
         id: 10,
         image: m10,
         title: "Chrome Watch",
         subtile: "Premium Sets",
-        price: "599"
+        price: "599",
+        percent: 18
     },
     {
         id: 11,
         image: m11,
         title: "Silver Laptop",
         subtile: "Laptops",
-        price: "2,799"
+        price: "2,799",
+        percent: 18
     },
     {
         id: 12,
         image: m12,
         title: "Silver Laptop",
         subtile: "Exclusive",
-        price: "2,399"
+        price: "2,399",
+        percent: 22
     },
 
 ];

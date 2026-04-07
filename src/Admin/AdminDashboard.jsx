@@ -5,6 +5,8 @@ import { FaInbox } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
 import Items from '../data/Items';
 import { allitems as orders } from '../data/UserOrder';
+import { allitems } from '../data/Items';
+import { IoTodayOutline } from "react-icons/io5";
 import {
     BarChart,
     Bar,
@@ -19,20 +21,6 @@ import {
 } from 'recharts';
 
 const AdminDashbord = () => {
-
-    const radius = 70;
-    const stroke = 12;
-    const normalizedRadius = radius - stroke * 0.5;
-    const circumference = normalizedRadius * 2 * Math.PI;
-
-    const progress1 = 75; // %
-    const progress2 = 50; // %
-
-    const strokeDashoffset1 =
-        circumference - (progress1 / 100) * circumference;
-
-    const strokeDashoffset2 =
-        circumference - (progress2 / 100) * circumference;
 
 
     const totalRevenue = orders.reduce((total, order) => total + parseFloat(order.price.replace(/,/g, '')), 0);
@@ -54,10 +42,23 @@ const AdminDashbord = () => {
         { name: 'Others', value: 10 },
     ];
     const pieColors = ['#10b981', '#f59e0b', '#60a5fa'];
+
+    const TopSellingProducts = allitems.filter(item => item.subtile === "Exclusive" || item.subtile === "Gaming").slice(0, 5); // Get top 5 exclusive products
+
+    const LowStockProducts = allitems.filter(item => item.percent >= 20).slice(0, 5); // Get top 5 low stock products
+
+    const RecentSales = allitems.filter(item => item.percent >= 15).slice(0, 5); // Get top 5 recent sales products
+
+
     return (
         <div>
             {/* Stats Section  */}
+            <div className='pb-4'>
+                <h1 className='text-3xl font-medium'>Dashboard</h1>
+                <p className='text-md'>Your main content goes here…</p>
+            </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+
                 <div className='bg-gray-800 text-white p-6 rounded-lg shadow-lg flex justify-between items-start'>
                     <div>
                         <h1 className='text-sm'>Total Revenue</h1>
@@ -202,6 +203,118 @@ const AdminDashbord = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Top Selling Products */}
+            <div className='grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 mt-5'>
+                <div className='p-7 border shadow rounded-lg bg-white'>
+                    <div className='flex justify-between'>
+                        <h1 className='text-xl font-medium'>Top Selling Products</h1>
+                        <button className='border-[1px] border-gray-700 px-2 rounded-sm hover:bg-gray-600 hover:text-white flex items-center gap-1 text-xs'>
+                            <IoTodayOutline /> Today
+                        </button>
+                    </div>
+
+                    <div className='bg-gray-300 w-full h-[1px] my-5'></div>
+
+                    <div>
+                        {TopSellingProducts.map((item) => {
+
+                            let color = "bg-red-600";
+
+                            if (item.percent > 20) {
+                                color = "bg-green-600";
+                            } else if (item.percent > 15) {
+                                color = "bg-yellow-500";
+                            }
+
+                            return (
+                                <div key={item.id} className='flex items-center justify-between gap-4 mt-4'>
+
+                                    <div className='flex items-center gap-3'>
+                                        <img
+                                            src={item.image}
+                                            alt=""
+                                            className='h-12 w-12 rounded-lg object-cover'
+                                        />
+                                        <div>
+                                            <h1>{item.title}</h1>
+                                            <p className='text-sm text-gray-500'>{item.subtitle}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className={`${color} px-2 py-1 rounded-md`}>
+                                        <h1 className='text-xs text-white'>{item.percent}%</h1>
+                                    </div>
+
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                {/* Low Stock Products */}
+                <div className='p-7 border shadow rounded-lg bg-white'>
+                    <div className='flex justify-between'>
+                        <h1 className='text-xl font-medium'>Low Stock Products</h1>
+                        <button className='underline text-blue-500 flex items-center gap-1 text-xs'>
+                            View All
+                        </button>
+                    </div>
+                    <div className='bg-gray-300 w-full h-[1px] my-5'></div>
+                    <div>
+                        <div>
+                            {LowStockProducts.map((item) => (
+                                <div key={item.id} className='flex items-center justify-between gap-4 mt-4'>
+                                    <div className='flex items-center'>
+                                        <img src={item.image} alt="" className='h-12 w-12 rounded-lg object-cover' />
+                                        <div>
+                                            <h1>{item.title}</h1>
+                                            <p className='text-sm text-gray-500'>{item.subtile}</p>
+                                        </div>
+                                    </div>
+                                    <div className='bg-red-600 px-2 py-1 rounded-md'>
+                                        <h1 className='text-xs text-white'>{item.percent}%</h1>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                {/* Recent Sales */}
+                <div className='p-7 border shadow rounded-lg bg-white'>
+                    <div className='flex justify-between'>
+                        <h1 className='text-xl font-medium'>Recent Sales</h1>
+                        <button className='border-[1px] border-gray-700 px-2 rounded-sm hover:bg-gray-600 hover:text-white flex items-center gap-1 text-xs'>
+                            <IoTodayOutline /> Week
+                        </button>
+                    </div>
+                    <div className='bg-gray-300 w-full h-[1px] my-5'></div>
+                    <div>
+                        <div>
+                            {RecentSales.map((item) => (
+                                <div key={item.id} className='flex items-center justify-between gap-4 mt-4'>
+                                    <div className='flex items-center'>
+                                        <img src={item.image} alt="" className='h-12 w-12 rounded-lg object-cover' />
+                                        <div>
+                                            <h1>{item.title}</h1>
+                                            <p className='text-sm text-gray-500'>{item.subtile}</p>
+                                        </div>
+                                    </div>
+                                    <div className='bg-red-600 px-2 py-1 rounded-md'>
+                                        <h1 className='text-xs text-white'>{item.percent}%</h1>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
     )

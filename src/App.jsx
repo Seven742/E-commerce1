@@ -10,7 +10,6 @@ import AdminLayout from './Admin/AdminLayout'
 import ScrollToTop from './components/ScrollToTop'
 import Products from './Admin/Products'
 import Orders from './Admin/Orders'
-import Users from './Admin/Users'
 import Report from './Admin/Report'
 import AdminLogin from './Admin/AdminLogin'
 import ProtectedRoute from './Admin/ProtectedRoute'
@@ -56,7 +55,6 @@ const App = () => {
           <Route index element={<AdminDashboard />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="users" element={<Users />} />
           <Route path="reports" element={<Report />} />
         </Route>
       </Routes>

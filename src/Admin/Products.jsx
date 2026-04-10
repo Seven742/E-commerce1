@@ -17,9 +17,11 @@ function Modal({ isOpen, children }) {
     )
 }
 
+
 const Products = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [category, setCategory] = useState('all');
+    const [search, setSearch] = useState('')
     const [form, setForm] = useState({
         title: '',
         shortDescription: '',
@@ -69,6 +71,15 @@ const Products = () => {
             ? allitems
             : allitems.filter(item => item.subtile === category);
 
+    const SearchItems = filteredItems.filter((item) => {
+        return item.title.toLowerCase().includes(search.toLowerCase())
+    })
+
+    // when u use () u don't need retrun but when u use {} u need to return the value
+    //  const SearchItems = filteredItems.filter((item) => (
+    //     item.title.toLowerCase().includes(search.toLowerCase())
+    // ))
+
     return (
         <div>
             <div className='pb-4'>
@@ -90,7 +101,7 @@ const Products = () => {
                         <option value='Exclusive'>Exclusive</option>
                         <option value='Tablet'>Tablet</option>
                     </select>
-                    <input type="text" placeholder='Search products...' className='ml-2 px-3 py-2 rounded-lg border outline-none' />
+                    <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder='Search products...' className='ml-2 px-3 py-2 rounded-lg border outline-none' />
                 </div>
                 <button onClick={() => setIsOpen(true)} className='bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg'>Add Product</button>
             </div>
@@ -170,28 +181,35 @@ const Products = () => {
                             </tr>
                         </thead>
                         <tbody className='divide-y'>
-                            {filteredItems.map((item) => (
-                                <tr key={item.id} className='hover:bg-gray-100 transition'>
-                                    <td className='px-6 py-4 flex items-center gap-3'>
-                                        <img src={item.image} className='w-10 h-10 rounded' alt='' />
-                                        {item.title}
-                                    </td>
-                                    <td className='px-6 py-4'>{item.subtile}</td>
-                                    <td className='px-6 py-4 font-medium'>${item.price}</td>
-                                    <td className='px-6 py-4'>50</td>
-                                    <td className='px-6 py-4'>
-                                        <span className='bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs'>
-                                            In Stock
-                                        </span>
-                                    </td>
-                                    <td className='px-6 py-4 '>
-                                        <div className='flex items-center justify-center gap-2 text-md'>
-                                            <button className='hover:text-red-600'><TbEdit /></button>
-                                            <button className='text-red-600 hover:text-red-700'><RiDeleteBin6Line /></button>
-                                        </div>
+                            {SearchItems.length > 0 ? (
+                                SearchItems.map((item) => (
+                                    <tr key={item.id} className='hover:bg-gray-100 transition'>
+                                        <td className='px-6 py-4 flex items-center gap-3'>
+                                            <img src={item.image} className='w-10 h-10 rounded' alt='' />
+                                            {item.title}
+                                        </td>
+                                        <td className='px-6 py-4'>{item.subtile}</td>
+                                        <td className='px-6 py-4 font-medium'>${item.price}</td>
+                                        <td className='px-6 py-4'>50</td>
+                                        <td className='px-6 py-4'>
+                                            <span className='bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs'>
+                                                In Stock
+                                            </span>
+                                        </td>
+                                        <td className='px-6 py-4 '>
+                                            <div className='flex items-center justify-center gap-2 text-md'>
+                                                <button className='hover:text-red-600'><TbEdit /></button>
+                                                <button className='text-red-600 hover:text-red-700'><RiDeleteBin6Line /></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))) : (
+                                <tr>
+                                    <td colSpan='7' className='text-center py-4 text-gray-500'>
+                                        No products found.
                                     </td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>

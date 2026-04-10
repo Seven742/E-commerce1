@@ -63,6 +63,9 @@ const AdminDashbord = () => {
                     <div>
                         <h1 className='text-sm'>Total Revenue</h1>
                         <h1 className='text-2xl font-medium'>$ {totalRevenue ? Number(totalRevenue).toFixed(2) : "0.00"}</h1>
+                        <p className='text-orange-500 text-sm mt-1'>
+                            +5% since last month
+                        </p>
                     </div>
                     <div className='bg-green-200 text-white px-2 py-2 rounded-lg'>
                         <h1 className='text-green-600'><BiDollar /></h1>
@@ -73,6 +76,10 @@ const AdminDashbord = () => {
                     <div>
                         <h1 className='text-sm'>Total Orders</h1>
                         <h1 className='text-2xl font-medium'>{orders.length}</h1>
+                        <p className='text-green-500 text-sm mt-1'>
+                            +22% since last month
+                        </p>
+
                     </div>
                     <div className='bg-green-200 text-white px-2 py-2 rounded-lg'>
                         <h1 className='text-green-600'><IoCartOutline /></h1>
@@ -83,6 +90,9 @@ const AdminDashbord = () => {
                     <div>
                         <h1 className='text-sm'>Total Products</h1>
                         <h1 className='text-2xl font-medium'>{Items.length}</h1>
+                        <p className='text-green-500 text-sm mt-1'>
+                            +10% since last month
+                        </p>
                     </div>
                     <div className='bg-green-200 text-white px-2 py-2 rounded-lg'>
                         <h1 className='text-green-600'><FaInbox /></h1>
@@ -93,6 +103,9 @@ const AdminDashbord = () => {
                     <div>
                         <h1 className='text-sm'>Total Customers</h1>
                         <h1 className='text-2xl font-medium'>4896</h1>
+                        <p className='text-green-500 text-sm mt-1'>
+                            +18% since last month
+                        </p>
                     </div>
                     <div className='bg-green-200 text-white px-2 py-2 rounded-lg'>
                         <h1 className='text-green-600'><FaUsers /></h1>

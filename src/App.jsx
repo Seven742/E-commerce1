@@ -13,7 +13,7 @@ import Orders from './Admin/Orders'
 import Report from './Admin/Report'
 import AdminLogin from './Admin/AdminLogin'
 import ProtectedRoute from './Admin/ProtectedRoute'
-import { SearchProvider } from './components/SearchContext'
+import Signup from './Admin/Signup'
 
 const App = () => {
   return (
@@ -43,6 +43,7 @@ const App = () => {
 
 
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/signup" element={<Signup />} />
 
         <Route
           path="/admin"

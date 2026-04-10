@@ -7,24 +7,24 @@ const Orders
             <div>
                 <div className='flex justify-between items-center'>
                     <div>
-                        <h1>Status</h1>
-                        <div className='flex items-center gap-4 mt-2'>
-                            <h1 className='bg-gray-300 px-3 rounded-md cursor-pointer'>All</h1>
-                            <h1 className='bg-gray-300 px-3 rounded-md cursor-pointer'>Pending</h1>
-                            <h1 className='bg-gray-300 px-3 rounded-md cursor-pointer'>Shipped</h1>
-                            <h1 className='bg-gray-300 px-3 rounded-md cursor-pointer'>Delivered</h1>
+                        <h1 className='text-xl font-medium'>Status</h1>
+                        <div className='flex items-center justify-center gap-4 mt-2'>
+                            <h1 className='border hover:bg-gray-800 hover:text-white border-black px-3 py-1  rounded-md cursor-pointer'>All</h1>
+                            <h1 className='border hover:bg-gray-800 hover:text-white border-black px-3 py-1 rounded-md cursor-pointer'>Pending</h1>
+                            <h1 className='border hover:bg-gray-800 hover:text-white border-black px-3 py-1 rounded-md cursor-pointer'>Shipped</h1>
+                            <h1 className='border hover:bg-gray-800 hover:text-white border-black px-3 py-1 rounded-md cursor-pointer'>Delivered</h1>
                         </div>
                     </div>
                     <div>
-                        <h1>Date Range</h1>
+                        <h1 className='text-xl font-medium'>Date Range</h1>
                         <div className='flex items-center gap-4 mt-2'>
-                            <select name="" id="" className='bg-gray-300 px-3 rounded-md cursor-pointer outline-none'>
+                            <select name="" id="" className=' px-3 py-1 rounded-md cursor-pointer outline-none'>
                                 <option value="">Last 7 Days</option>
                                 <option value="">Last 30 Days</option>
                                 <option value="">Last 90 Days</option>
                             </select>
-                            <h1 className='bg-gray-300 px-3 rounded-md cursor-pointer'>All Month</h1>
-                            <select name="" id="" className='bg-gray-300 px-3 rounded-md cursor-pointer outline-none'>
+                            <h1 className='border py-1 hover:bg-gray-800 hover:text-white border-black px-3 rounded-md cursor-pointer'>All Month</h1>
+                            <select name="" id="" className='bg-white px-3 py-1 rounded-md cursor-pointer outline-none'>
                                 <option value="">More</option>
                             </select>
                         </div>

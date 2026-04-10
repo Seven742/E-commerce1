@@ -85,10 +85,10 @@ const AdminLayout = () => {
                         <NavLink to="/admin/login" onClick={handleLogout}>
                             <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer hover:bg-gray-900`}>
                                 <IoLogOutOutline className='text-lg text-white' />
-                                {isSidebarOpen && "Logout"}
+                                {isSidebarOpen && "Log out"}
                             </li>
                         </NavLink>
-                        <NavLink to="/admin/login" onClick={handleLogout}>
+                        <NavLink to="/admin/signup" >
                             <li className={`px-8 flex items-center h-12 gap-3 cursor-pointer hover:bg-gray-900`}>
                                 <MdPersonAddAlt1 className='text-lg text-white' />
                                 {isSidebarOpen && "Sign Up"}
